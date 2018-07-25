@@ -1,6 +1,6 @@
 <template>
     <div class="nav-list" @click.stop="$emit('close')">
-        <div class="nav-box" @click.stop></div>
+        <div class="nav-box"></div>
         <ul>
             <!-- <li v-for="curr in navs" :key='curr.id'>
                 <a href="#">{{curr.title}}</a>
