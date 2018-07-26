@@ -2,10 +2,6 @@
     <div class="nav-list" @click.stop="$emit('close')">
         <div class="nav-box"></div>
         <ul>
-            <!-- <li v-for="curr in navs" :key='curr.id'>
-                <a href="#">{{curr.title}}</a>
-                <i class="fa fa-angle-right fa-lg"></i>
-            </li> -->
             <router-link 
             tag="li" 
             v-for="curr in navs" 
@@ -26,7 +22,7 @@ export default{
         return{
             navs:[
                 {id:1,title:"首页",path:"/home"},
-                {id:2,title:"影片",path:"/filem"},
+                {id:2,title:"影片",path:"/film/nowplaying"},
                 {id:3,title:"影院",path:"/cinema"},
                 {id:4,title:"商城",path:"/mall"},
                 {id:5,title:"我的",path:"/mine"},

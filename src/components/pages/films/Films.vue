@@ -1,18 +1,19 @@
 <template>
     <div>
         <div class="titles">
-            <div v-for="list in navs" :key='list.id' :to="list.path">{{list.title}}</div>
+            <router-link class="movie-head" v-for="list in navs" :key='list.id' :to="list.path">{{list.title}}</router-link class="movie-head">
         </div>
+        <router-view></router-view>
     </div>
 </template>
 <script>
      export default{
-        name:"Filems",
+        name:"Films",
         data(){
             return{
                 navs:[
-                {id:21,title:"正在热映",path:"/hotfilem"},
-                {id:22,title:"即将上映",path:"/whilefilem"},
+                {id:21,title:"正在热映",path:"nowplaying",type:"/film/nowplaying"},
+                {id:22,title:"即将上映",path:"comingsoon",type:"/film/coming-soon"}
             ]
             }
         },
@@ -28,7 +29,8 @@
             margin: 0 auto;
             border-bottom: 1px solid red;
             height: .45rem;
-            div{
+           .movie-head{
+                text-decoration: none;
                 color:red;
                 width: 50%;
                 text-align: center;
