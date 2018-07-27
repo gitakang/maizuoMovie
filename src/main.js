@@ -7,12 +7,14 @@ import "./css/main.scss";
 
 import Vue from 'vue';
 import App from './App'; 
-import router from "./router/index.js"
+import router from "./router/index.js";
+import vuebus from "vue-bus";
 
 //引入mint-Ui 实现滚动加载（懒加载） 和加载提示
 import { InfiniteScroll, Toast } from 'mint-ui';
 Vue.use(InfiniteScroll);
 Vue.use(Toast);
+Vue.use(vuebus);
 
 Vue.config.productionTip = false
 

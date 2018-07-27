@@ -1,6 +1,17 @@
 <template>
-    <div>
-        <div class="filem-name" v-for="curr in films" :key="curr.id" >
+    <div
+    v-infinite-scroll="loadMore"
+    infinite-scroll-disabled="loading"
+    infinite-scroll-distance="10"
+    infinite-scroll-immediate-check="false"
+    >
+        <router-link 
+        tag="div" 
+        class="filem-name" 
+        v-for="curr in films" 
+        :key="curr.id"
+        :to="url + '/' + curr.id + '/' + type"
+        >
             <div class="imgs"><img :src="curr.poster.origin"></div>
             <div class="right">
                 <div class="movie-name">
@@ -12,7 +23,7 @@
                     <span>{{curr.scheduleCount}}家影院上映</span><span class="">{{curr.watchCount}}人购票</span>
                 </div>
             </div>
-        </div>
+    </router-link>
     </div>
 </template>
 
@@ -20,12 +31,15 @@
     import axios from 'axios';
     import {Toast} from "mint-ui";
     export default{
-        
         name:"NowPlaying",
         // props:["type"],
         data(){
             return{
-                films:[]
+                films:[],
+                count:7,
+                loading:false,
+                url:"/moviedetails",
+                type:"isNowPlaying"
             }
         },
         methods: {
@@ -34,17 +48,26 @@
                     params:{
                         __t:Date.now(),
                         page:1,
-                        count:7
+                        count:this.count
                     }
                 }).then(res=>{
                     this.films = res.data.data.films;
                 })
+            },
+            loadMore() {
+            this.loading = true;
+            setTimeout(() => {
+                let last = this.films[this.films.length - 1];
+                this.count += 7;
+                this.loadMovie();
+                this.loading = false;
+            }, 2500);
+            },
+            nowMovie(id){
+                this.$bus.emit("nowMovie",(id))
             }
         },
         created() {
-            this.loadMovie();
-        },
-        beforeMount () {
             this.loadMovie();
         }
     }

@@ -13,6 +13,7 @@ import Mine from "../components/pages/mine/Mine.vue";
 import Address from "../components/pages/address/Address.vue";
 import NowPlaying from "../components/pages/films/NowPlaying.vue";
 import ComingSoon from "../components/pages/films/ComingSoon.vue";
+import MovieDetails from "../components/pages/films/MovieDetails.vue";
 
 const router = new VueRouter ({
     routes:[
@@ -32,7 +33,8 @@ const router = new VueRouter ({
         {path:"/mall",component:Mall},
         {path:"/sellCard",component:SellCard},
         {path:"/mine",component:Mine},
-        {path:"/address",component:Address}
+        {path:"/address",component:Address},
+        {path:"/moviedetails/:id/:type",component:MovieDetails,props:true}
     ]
 });
 

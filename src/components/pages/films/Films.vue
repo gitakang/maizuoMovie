@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="titles">
-            <router-link class="movie-head" v-for="list in navs" :key='list.id' :to="list.path">{{list.title}}</router-link class="movie-head">
+            <router-link class="movie-head" v-for="list in navs" :key='list.id' :to="list.path">{{list.title}}</router-link>
         </div>
         <router-view></router-view>
     </div>
@@ -12,8 +12,8 @@
         data(){
             return{
                 navs:[
-                {id:21,title:"正在热映",path:"nowplaying",type:"/film/nowplaying"},
-                {id:22,title:"即将上映",path:"comingsoon",type:"/film/coming-soon"}
+                {id:21,title:"正在热映",path:"nowplaying"},
+                {id:22,title:"即将上映",path:"comingsoon"}
             ]
             }
         },
